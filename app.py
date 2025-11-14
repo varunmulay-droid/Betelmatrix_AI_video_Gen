@@ -39,6 +39,10 @@ class AppState:
         self.vae_decode = None
 
 state = AppState()
+# Override output directory to be inside the working folder
+state.output_dir = "/content/Betelmatrix_AI_video_Gen/output"
+os.makedirs(state.output_dir, exist_ok=True)
+
 
 # ==================== ENVIRONMENT SETUP ====================
 def install_dependencies(progress=gr.Progress()):
@@ -597,5 +601,6 @@ if __name__ == "__main__":
         show_error=True,
         server_name="0.0.0.0",
         server_port=7861
+        allowed_paths=["/content"]
     )
     print("✅ Application launched successfully!")
